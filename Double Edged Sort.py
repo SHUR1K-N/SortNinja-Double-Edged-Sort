@@ -158,12 +158,14 @@ if ((len(unsorted)) % 2 == 0):
 else:
     isEven = False
 
-ascdesc = str(input("\nAscending or Descending? (Default = Ascending): ") or "ascending")
+print("\nOrder:-")
+print("1. Ascending\n2. Descending")
+ascdesc = str(input("\nSelect order number (Default = Ascending): ") or "1")
 ascdesc = ascdesc.lower()
 
 print("\nWorking...", end='')
 
-if (ascdesc == "ascending"):
+if (ascdesc == "1"):
     small = min(unsorted)
     big = max(unsorted)
     if isEven is True:
@@ -171,7 +173,7 @@ if (ascdesc == "ascending"):
     elif isEven is False:
         ascendingOdd()
 
-elif (ascdesc == "descending"):
+elif (ascdesc == "2"):
     small = max(unsorted)
     big = min(unsorted)
     if isEven is True:

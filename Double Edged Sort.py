@@ -118,6 +118,7 @@ def prompt(unsorted):
                         for num in file:
                             integerize = int(num)
                             unsorted.append(integerize)
+                        file.close()
                     break
 
                 except FileNotFoundError:

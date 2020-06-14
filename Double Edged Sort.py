@@ -1,5 +1,6 @@
-array = []; sorted = []; isEven = True
+unsorted = []; sorted = []; isEven = True
 decisionMade = False; correctInput = False
+correctPath = False
 
 
 ##### Odd functions #####
@@ -7,52 +8,52 @@ decisionMade = False; correctInput = False
 def ascendingOdd():
     if isEven is False:
 
-        iterations = (len(array) // 2)
+        iterations = (len(unsorted) // 2)
         indexfirst = 0
         indexlast = indexfirst + 1
 
-        small = min(array)
-        big = max(array)
+        small = min(unsorted)
+        big = max(unsorted)
 
         for i in range(iterations):
 
             sorted.insert(indexfirst, small)
             sorted.insert(indexlast, big)
-            array.remove(small)
-            array.remove(big)
+            unsorted.remove(small)
+            unsorted.remove(big)
 
-            small = min(array)
-            big = max(array)
+            small = min(unsorted)
+            big = max(unsorted)
 
             indexfirst += 1
             indexlast += 1
-        sorted.insert(indexfirst, array[0])
+        sorted.insert(indexfirst, unsorted[0])
     return(sorted)
 
 
 def descendingOdd():
     if isEven is False:
 
-        iterations = (len(array) // 2)
+        iterations = (len(unsorted) // 2)
         indexfirst = 0
         indexlast = indexfirst + 1
 
-        small = min(array)
-        big = max(array)
+        small = min(unsorted)
+        big = max(unsorted)
 
         for i in range(iterations):
 
             sorted.insert(indexfirst, big)
             sorted.insert(indexlast, small)
-            array.remove(big)
-            array.remove(small)
+            unsorted.remove(big)
+            unsorted.remove(small)
 
-            small = min(array)
-            big = max(array)
+            small = min(unsorted)
+            big = max(unsorted)
 
             indexfirst += 1
             indexlast += 1
-        sorted.insert(indexfirst, array[0])
+        sorted.insert(indexfirst, unsorted[0])
     return(sorted)
 
 
@@ -61,22 +62,22 @@ def descendingOdd():
 def ascendingEven():
     if isEven is True:
 
-        iterations = (len(array) // 2)
+        iterations = (len(unsorted) // 2)
         indexfirst = 0
         indexlast = indexfirst + 1
 
-        small = min(array)
-        big = max(array)
+        small = min(unsorted)
+        big = max(unsorted)
 
         for i in range(1, iterations):
 
             sorted.insert(indexfirst, small)
             sorted.insert(indexlast, big)
-            array.remove(small)
-            array.remove(big)
+            unsorted.remove(small)
+            unsorted.remove(big)
 
-            small = min(array)
-            big = max(array)
+            small = min(unsorted)
+            big = max(unsorted)
 
             indexfirst += 1
             indexlast += 1
@@ -88,22 +89,22 @@ def ascendingEven():
 def descendingEven():
     if isEven is True:
 
-        iterations = (len(array) // 2)
+        iterations = (len(unsorted) // 2)
         indexfirst = 0
         indexlast = indexfirst + 1
 
-        small = min(array)
-        big = max(array)
+        small = min(unsorted)
+        big = max(unsorted)
 
         for i in range(1, iterations):
 
             sorted.insert(indexfirst, big)
             sorted.insert(indexlast, small)
-            array.remove(big)
-            array.remove(small)
+            unsorted.remove(big)
+            unsorted.remove(small)
 
-            small = min(array)
-            big = max(array)
+            small = min(unsorted)
+            big = max(unsorted)
 
             indexfirst += 1
             indexlast += 1
@@ -112,13 +113,15 @@ def descendingEven():
     return(sorted)
 
 
-def prompt(array):
+def prompt(unsorted):
     while (decisionMade is False):
-        decision = input("Manual entry of integers or supply a number list .txt file? ")
+        print("\nMethods:-")
+        print("1. Manual entry of integers\n2. Supply a number list file")
+        decision = input("\nSelect method number: ")
         if (decision == "1"):
             while (correctInput is False):
                 try:
-                    array = list(map(int, input("Input integers to sort (separated by spaces): ").split()))
+                    unsorted = list(map(int, input("\nInput integers to sort (separated by spaces): ").split()))
                     break
                 except ValueError:
                     print("\nInvalid character(s) entered. Input only integers. Try again.\n")
@@ -126,24 +129,31 @@ def prompt(array):
             break
 
         elif (decision == "2"):
-            filePath = input("Enter the .txt file path here: ")
-            with open(filePath) as file:
-                for num in file:
-                    integerize = int(num)
-                    array.append(integerize)
+            while (correctPath is False):
+                try:
+                    filePath = input("\nEnter the file path here: ")
+                    with open(filePath) as file:
+                        for num in file:
+                            integerize = int(num)
+                            unsorted.append(integerize)
+                    break
+
+                except FileNotFoundError:
+                    print("\nEither file does not exist or invalid path entered. Try again.\n")
+                    continue
             break
 
         else:
             print("\nInvalid entry. Choose either option 1 or 2. Try again.\n")
             continue
-    return (array)
+    return (unsorted)
 
 
 ##### Main #####
 
-array = prompt(array)
+unsorted = prompt(unsorted)
 
-if ((len(array)) % 2 == 0):
+if ((len(unsorted)) % 2 == 0):
     isEven = True
 else:
     isEven = False
@@ -154,21 +164,21 @@ ascdesc = ascdesc.lower()
 print("\nWorking...", end='')
 
 if (ascdesc == "ascending"):
-    small = min(array)
-    big = max(array)
+    small = min(unsorted)
+    big = max(unsorted)
     if isEven is True:
         ascendingEven()
     elif isEven is False:
         ascendingOdd()
 
 elif (ascdesc == "descending"):
-    small = max(array)
-    big = min(array)
+    small = max(unsorted)
+    big = min(unsorted)
     if isEven is True:
         descendingEven()
     elif isEven is False:
         descendingOdd()
 
-print("\nSorted array: ", sorted)
+print("\n\nSorted list: ", sorted)
 print("\n\nPress any key to exit.")
 input()

@@ -160,7 +160,7 @@ else:
 
 print("\nOrder:-")
 print("1. Ascending\n2. Descending")
-ascdesc = str(input("\nSelect order number (Default = Ascending): ") or "1")
+ascdesc = input("\nSelect order number (Default = Ascending): ") or "1"
 ascdesc = ascdesc.lower()
 
 print("\nWorking...", end='')

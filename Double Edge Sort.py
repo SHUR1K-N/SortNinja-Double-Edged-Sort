@@ -1,4 +1,5 @@
 array = []; sorted = []; isEven = True
+decisionMade = False; correctInput = False
 
 
 ##### Odd functions #####
@@ -111,17 +112,46 @@ def descendingEven():
     return(sorted)
 
 
+def prompt(array):
+    while (decisionMade is False):
+        decision = input("Manual entry of integers or supply a number list .txt file? ")
+        if (decision == "1"):
+            while (correctInput is False):
+                try:
+                    array = list(map(int, input("Input integers to sort (separated by spaces): ").split()))
+                    break
+                except ValueError:
+                    print("\nInvalid character(s) entered. Input only integers. Try again.\n")
+                    continue
+            break
+
+        elif (decision == "2"):
+            filePath = input("Enter the .txt file path here: ")
+            with open(filePath) as file:
+                for num in file:
+                    integerize = int(num)
+                    array.append(integerize)
+            break
+
+        else:
+            print("\nInvalid entry. Choose either option 1 or 2. Try again.\n")
+            continue
+    return (array)
+
+
 ##### Main #####
 
-array = list(map(int, input("Input integers to sort (separated by spaces): ").split()))
+array = prompt(array)
 
 if ((len(array)) % 2 == 0):
     isEven = True
 else:
     isEven = False
 
-ascdesc = input("\nAscending or Descending? ")
+ascdesc = str(input("\nAscending or Descending? (Default = Ascending): ") or "ascending")
 ascdesc = ascdesc.lower()
+
+print("\nWorking...", end='')
 
 if (ascdesc == "ascending"):
     small = min(array)

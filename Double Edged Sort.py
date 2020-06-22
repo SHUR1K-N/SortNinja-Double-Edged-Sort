@@ -95,7 +95,7 @@ def descendingEven(indexFirst, indexLast):
     return(sorted, iterations)
 
 
-def prompt(unsorted):
+def prompt():
     while (decisionMade is False):
         print("\nMethods:-")
         print("1. Manual entry of integers\n2. Supply a number list file")
@@ -134,7 +134,7 @@ def prompt(unsorted):
 
 ##### Main #####
 
-unsorted = prompt(unsorted)
+unsorted = prompt()
 
 iterations = (len(unsorted) // 2)
 indexFirst = 0

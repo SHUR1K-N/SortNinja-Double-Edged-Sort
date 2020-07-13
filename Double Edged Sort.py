@@ -111,6 +111,7 @@ def prompt():
             break
 
         elif (decision == "2"):
+            unsorted = []
             while (correctPath is False):
                 try:
                     filePath = input("\nEnter the file path here: ")
@@ -173,6 +174,11 @@ elif (ascdesc == "2"):
 completionTime = time.time() - start
 
 print("\n\nSorted list: ", sorted)
-print("\n\nThe task completed successfully in %f seconds. (at ~%d accesses/sec)" % (completionTime, iterations // completionTime))
-print("Press any key to exit.")
-input()
+try:
+    print("\n\nThe task completed successfully in %f seconds. (at ~%d accesses/sec)" % (completionTime, iterations // completionTime))
+    print("Press any key to exit.")
+    input()
+except ZeroDivisionError:
+    print("\n\nThe task completed successfully in zero seconds.")
+    print("Press any key to exit.")
+    input()

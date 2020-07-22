@@ -5,9 +5,7 @@ decisionMade = False; correctInput = False
 correctPath = False
 
 
-##### Odd functions #####
-
-def ascendingOdd(indexFirst, indexLast):
+def ascending(indexFirst, indexLast):
 
     small = min(unsorted)
     big = max(unsorted)
@@ -19,16 +17,18 @@ def ascendingOdd(indexFirst, indexLast):
         unsorted.remove(small)
         unsorted.remove(big)
 
-        small = min(unsorted)
-        big = max(unsorted)
+        if (len(unsorted) >= 1):
+            small = min(unsorted)
+            big = max(unsorted)
+            indexFirst += 1
+            indexLast += 1
 
-        indexFirst += 1
-        indexLast += 1
-    sorted.insert(indexFirst, unsorted[0])
+    if (len(unsorted) >= 1):
+        sorted.insert(indexFirst, unsorted[0])
     return(sorted, iterations)
 
 
-def descendingOdd(indexFirst, indexLast):
+def descending(indexFirst, indexLast):
 
     small = min(unsorted)
     big = max(unsorted)
@@ -40,58 +40,14 @@ def descendingOdd(indexFirst, indexLast):
         unsorted.remove(big)
         unsorted.remove(small)
 
-        small = min(unsorted)
-        big = max(unsorted)
+        if (len(unsorted) >= 1):
+            small = min(unsorted)
+            big = max(unsorted)
+            indexFirst += 1
+            indexLast += 1
 
-        indexFirst += 1
-        indexLast += 1
-    sorted.insert(indexFirst, unsorted[0])
-    return(sorted, iterations)
-
-
-##### Even functions #####
-
-def ascendingEven(indexFirst, indexLast):
-
-    small = min(unsorted)
-    big = max(unsorted)
-
-    for i in range(1, iterations):
-
-        sorted.insert(indexFirst, small)
-        sorted.insert(indexLast, big)
-        unsorted.remove(small)
-        unsorted.remove(big)
-
-        small = min(unsorted)
-        big = max(unsorted)
-
-        indexFirst += 1
-        indexLast += 1
-    sorted.insert(indexFirst, small)
-    sorted.insert(indexLast, big)
-    return(sorted, iterations)
-
-
-def descendingEven(indexFirst, indexLast):
-
-    small = min(unsorted)
-    big = max(unsorted)
-
-    for i in range(1, iterations):
-
-        sorted.insert(indexFirst, big)
-        sorted.insert(indexLast, small)
-        unsorted.remove(big)
-        unsorted.remove(small)
-
-        small = min(unsorted)
-        big = max(unsorted)
-
-        indexFirst += 1
-        indexLast += 1
-    sorted.insert(indexFirst, big)
-    sorted.insert(indexLast, small)
+    if (len(unsorted) >= 1):
+        sorted.insert(indexFirst, unsorted[0])
     return(sorted, iterations)
 
 
@@ -156,20 +112,10 @@ print("\nWorking...", end='')
 start = time.time()
 
 if (ascdesc == "1"):
-    small = min(unsorted)
-    big = max(unsorted)
-    if isEven is True:
-        ascendingEven(indexFirst, indexLast)
-    elif isEven is False:
-        ascendingOdd(indexFirst, indexLast)
+    ascending(indexFirst, indexLast)
 
 elif (ascdesc == "2"):
-    small = max(unsorted)
-    big = min(unsorted)
-    if isEven is True:
-        descendingEven(indexFirst, indexLast)
-    elif isEven is False:
-        descendingOdd(indexFirst, indexLast)
+    descending(indexFirst, indexLast)
 
 completionTime = time.time() - start
 

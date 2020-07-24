@@ -70,7 +70,7 @@ def prompt():
             unsorted = []
             while (correctPath is False):
                 try:
-                    filePath = input("\nSupply file path here: ")
+                    filePath = input("\nEnter file path here: ")
                     with open(filePath) as file:
                         for num in file:
                             integerize = int(num)

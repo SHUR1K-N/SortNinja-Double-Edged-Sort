@@ -1,6 +1,6 @@
 import time
 
-unsorted = []; sorted = []; isEven = True
+unsorted = []; sorted = []
 decisionMade = False; correctInput = False
 correctPath = False
 
@@ -70,7 +70,7 @@ def prompt():
             unsorted = []
             while (correctPath is False):
                 try:
-                    filePath = input("\nEnter the file path here: ")
+                    filePath = input("\nSupply file path here: ")
                     with open(filePath) as file:
                         for num in file:
                             integerize = int(num)
@@ -97,15 +97,9 @@ iterations = (len(unsorted) // 2)
 indexFirst = 0
 indexLast = indexFirst + 1
 
-if ((len(unsorted)) % 2 == 0):
-    isEven = True
-else:
-    isEven = False
-
 print("\nOrder:-")
 print("1. Ascending\n2. Descending")
 ascdesc = input("\nSelect order number (Default = Ascending): ") or "1"
-ascdesc = ascdesc.lower()
 
 print("\nWorking...", end='')
 

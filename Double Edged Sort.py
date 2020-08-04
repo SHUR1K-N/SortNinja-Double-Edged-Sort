@@ -91,34 +91,36 @@ def prompt():
 
 ##### Main #####
 
-unsorted = prompt()
+if __name__ == "__main__":
 
-iterations = (len(unsorted) // 2)
-indexFirst = 0
-indexLast = indexFirst + 1
+    unsorted = prompt()
 
-print("\nOrder:-")
-print("1. Ascending\n2. Descending")
-ascdesc = input("\nSelect order number (Default = Ascending): ") or "1"
+    iterations = (len(unsorted) // 2)
+    indexFirst = 0
+    indexLast = indexFirst + 1
 
-print("\nWorking...", end='')
+    print("\nOrder:-")
+    print("1. Ascending\n2. Descending")
+    ascdesc = input("\nSelect order number (Default = Ascending): ") or "1"
 
-start = time.time()
+    print("\nWorking...", end='')
 
-if (ascdesc == "1"):
-    ascending(indexFirst, indexLast)
+    start = time.time()
 
-elif (ascdesc == "2"):
-    descending(indexFirst, indexLast)
+    if (ascdesc == "1"):
+        ascending(indexFirst, indexLast)
 
-completionTime = time.time() - start
+    elif (ascdesc == "2"):
+        descending(indexFirst, indexLast)
 
-print("\n\nSorted list: ", sorted)
-try:
-    print("\n\nThe task completed successfully in %f seconds. (at ~%d accesses/sec)" % (completionTime, iterations // completionTime))
-    print("Press any key to exit.")
-    input()
-except ZeroDivisionError:
-    print("\n\nThe task completed successfully in zero seconds.")
-    print("Press any key to exit.")
-    input()
+    completionTime = time.time() - start
+
+    print("\n\nSorted list: ", sorted)
+    try:
+        print("\n\nThe task completed successfully in %f seconds. (at ~%d accesses/sec)" % (completionTime, iterations // completionTime))
+        print("Press any key to exit.")
+        input()
+    except ZeroDivisionError:
+        print("\n\nThe task completed successfully in zero seconds.")
+        print("Press any key to exit.")
+        input()

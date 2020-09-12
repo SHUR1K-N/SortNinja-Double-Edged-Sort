@@ -74,9 +74,9 @@ def clrscr():
 
 def outputFile():
         try:
-            outputMatch = re.search("(.+)[$\.].+", filePath)
+            outputMatch = re.search(r"(.+)[$\.].+", filePath)
             output = str(outputMatch[1])
-            extensionMatch = re.search(".+[$\.](.+)", filePath)
+            extensionMatch = re.search(r".+[$\.](.+)", filePath)
             extension = str(extensionMatch[1])
         except:
             output = filePath

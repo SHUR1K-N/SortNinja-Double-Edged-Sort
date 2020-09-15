@@ -6,7 +6,6 @@ import re
 unsorted = []; sorted = []
 
 BANNER1 = colored('''
-
                   ██████  ▒█████   ██▀███  ▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
                 ▒██    ▒ ▒██▒  ██▒▓██ ▒ ██▒▓  ██▒ ▓▒ ██ ▀█   █ ▓██▒ ██ ▀█   █    ▒██  ▒████▄
                 ░ ▓██▄   ▒██░  ██▒▓██ ░▄█ ▒▒ ▓██░ ▒░▓██  ▀█ ██▒▒██▒▓██  ▀█ ██▒   ░██  ▒██  ▀█▄
@@ -15,8 +14,7 @@ BANNER1 = colored('''
                 ▒ ▒▓▒ ▒ ░░ ▒░▒░▒░ ░ ▒▓ ░▒▓░  ▒ ░░   ░ ▒░   ▒ ▒ ░▓  ░ ▒░   ▒ ▒  ▒▓▒▒░   ▒▒   ▓▒█░
                 ░ ░▒  ░ ░  ░ ▒ ▒░   ░▒ ░ ▒░    ░    ░ ░░   ░ ▒░ ▒ ░░ ░░   ░ ▒░ ▒ ░▒░    ▒   ▒▒ ░
                 ░  ░  ░  ░ ░ ░ ▒    ░░   ░   ░         ░   ░ ░  ▒ ░   ░   ░ ░  ░ ░ ░    ░   ▒
-                      ░      ░ ░     ░                       ░  ░           ░  ░   ░        ░  ░
-                      ''', 'blue')
+                      ░      ░ ░     ░                       ░  ░           ░  ░   ░        ░  ░''', 'blue')
 BANNER2 = colored('''                                SortNinja: The Double Edged Sorting Algorithm''', 'red')
 BANNER3 = colored('''                               -----------------------------------------------''', 'blue')
 
@@ -90,23 +88,23 @@ def outputFile():
         print(f"\n\nGenerated \"{output}\" with sorted elements.")
 
 
-##### Main #####
+############### Main ###############
 
 if __name__ == "__main__":
 
     printBanner()
 
     while (True):
-        print("Methods:-")
+        print("\nMethods:-")
         print("1. Manual entry of integers\n2. Supply a number list file")
         method = input("\nSelect method number: ")
         if (method == "1"):
             while (True):
                 try:
-                    unsorted = list(map(int, input("\nInput integers to sort (separated by spaces): ").split()))
+                    unsorted = list(map(int, input("\nEnter integers to sort (separated by spaces): ").split()))
                 except ValueError:
                     clrscr()
-                    print("\nInvalid character(s) entered. Input only integers. Try again.\n")
+                    print("\nInvalid character(s) entered. Enter only integers. Try again.\n")
                     continue
                 break
             break

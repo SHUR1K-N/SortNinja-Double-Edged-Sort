@@ -165,7 +165,7 @@ if __name__ == "__main__":
 
     if (method == "1"):
         clrscr()
-        print(f"\n\nSorted elements: {sorted}")
+        print(colored(f"\nSorted elements: {sorted}", "green"))
     elif(method == "2"):
         outputFile()
 

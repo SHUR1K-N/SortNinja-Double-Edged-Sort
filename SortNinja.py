@@ -5,6 +5,8 @@ import re
 
 unsorted = []; sorted = []
 
+init() # Initilizing colors
+
 BANNER1 = colored('''
                   ██████  ▒█████   ██▀███  ▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
                 ▒██    ▒ ▒██▒  ██▒▓██ ▒ ██▒▓  ██▒ ▓▒ ██ ▀█   █ ▓██▒ ██ ▀█   █    ▒██  ▒████▄
@@ -20,7 +22,6 @@ BANNER3 = colored('''                               ----------------------------
 
 
 def printBanner():
-    init()
     print(BANNER1), print(BANNER2), print(BANNER3)
 
 
@@ -94,87 +95,96 @@ if __name__ == "__main__":
 
     printBanner()
 
-    while (True):
-        print("\nMethods:-")
-        print("1. Manual entry of integers\n2. Supply a number list file")
-        method = input("\nSelect method number: ")
-        if (method == "1"):
-            while (True):
-                try:
-                    unsorted = list(map(int, input("\nEnter integers to sort (separated by spaces): ").split()))
-                except ValueError:
-                    clrscr()
-                    print("\nInvalid character(s) entered. Enter only integers. Try again.\n")
-                    continue
-                break
-            break
-
-        elif (method == "2"):
-            unsorted = []
-
-            while (True):
-                filePath = input("\nEnter file path here: ")
-
-                if (os.path.exists(filePath) is True):
-                    with open(filePath, "r") as file:
-                        for number in file:
-                            unsorted.append(int(number))
-                        if (len(unsorted) != 0):
-                            break
-                        else:
-                            clrscr()
-                            print("\nSpecified file is empty. Try again.\n")
-                            continue
-
-                else:
-                    clrscr()
-                    print("\nEither file does not exist or invalid path entered. Try again.\n")
-                    continue
-        else:
-            clrscr()
-            print("\nInvalid entry. Choose either option 1 or 2. Try again.\n")
-            continue
-
-    iterations = (len(unsorted) // 2)
-    indexFirst = 0
-    indexLast = indexFirst + 1
-
-    while (True):
-        print("\nOrder:-")
-        print("1. Ascending\n2. Descending")
-        ascdesc = input("\nSelect order number (Default = Ascending): ") or "1"
-
-        start = time.time()
-
-        if (ascdesc == "1"):
-            clrscr()
-            sorted = ascending(indexFirst, indexLast)
-            break
-
-        elif (ascdesc == "2"):
-            clrscr()
-            sorted = descending(indexFirst, indexLast)
-            break
-
-        else:
-            clrscr()
-            print("\nInvalid entry. Choose either option 1 or 2. Try again.\n")
-            continue
-
-    completionTime = time.time() - start
-
-    if (method == "1"):
-        clrscr()
-        print(colored(f"\nSorted elements: {sorted}", "green"))
-    elif(method == "2"):
-        outputFile()
-
     try:
-        rate = iterations // completionTime
-        print(f"\n\nThe task completed successfully in {completionTime} seconds. (at ~{rate} accesses/sec)")
-        print("Press Enter to exit.")
-        input()
-    except ZeroDivisionError:
-        print("\n\nThe task completed successfully in zero seconds.")
+
+        while (True):
+            print("\nMethods:-")
+            print("1. Manual entry of integers\n2. Supply a number list file")
+            method = input("\nSelect method number: ")
+            if (method == "1"):
+                while (True):
+                    try:
+                        unsorted = list(map(int, input("\nEnter integers to sort (separated by spaces): ").split()))
+                    except ValueError:
+                        clrscr()
+                        print("\nInvalid character(s) entered. Enter only integers. Try again.\n")
+                        continue
+                    break
+                break
+
+            elif (method == "2"):
+                unsorted = []
+
+                while (True):
+                    filePath = input("\nEnter file path here: ")
+
+                    if (os.path.exists(filePath) is True):
+                        with open(filePath, "r") as file:
+                            for number in file:
+                                unsorted.append(int(number))
+                            if (len(unsorted) != 0):
+                                break
+                            else:
+                                clrscr()
+                                print("\nSpecified file is empty. Try again.\n")
+                                continue
+
+                    else:
+                        clrscr()
+                        print("\nEither file does not exist or invalid path entered. Try again.\n")
+                        continue
+            else:
+                clrscr()
+                print("\nInvalid entry. Choose either option 1 or 2. Try again.\n")
+                continue
+
+            break
+
+        iterations = (len(unsorted) // 2)
+        indexFirst = 0
+        indexLast = indexFirst + 1
+
+        while (True):
+            print("\nOrder:-")
+            print("1. Ascending\n2. Descending")
+            ascdesc = input("\nSelect order number (Default = Ascending): ") or "1"
+
+            start = time.time()
+
+            if (ascdesc == "1"):
+                clrscr()
+                sorted = ascending(indexFirst, indexLast)
+                break
+
+            elif (ascdesc == "2"):
+                clrscr()
+                sorted = descending(indexFirst, indexLast)
+                break
+
+            else:
+                clrscr()
+                print("\nInvalid entry. Choose either option 1 or 2. Try again.\n")
+                continue
+
+        completionTime = time.time() - start
+
+        if (method == "1"):
+            clrscr()
+            print(colored(f"\nSorted elements: {sorted}", "green"))
+        elif(method == "2"):
+            outputFile()
+
+        try:
+            rate = iterations // completionTime
+            print(f"\n\nThe task completed successfully in {completionTime} seconds. (at ~{rate} accesses/sec)")
+            print("Press Enter to exit.")
+            input()
+        except ZeroDivisionError:
+            print("\n\nThe task completed successfully in zero seconds.")
+            print("Press Enter to exit.")
+            input()
+    except KeyboardInterrupt:
+        clrscr()
+        print("\nCTRL ^C\n\nThrew a wrench in the works.")
         print("Press Enter to exit.")
         input()

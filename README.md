@@ -1,4 +1,4 @@
-﻿﻿# Double-Edged Sort: A Double Sort/Iteration Algorithm
+﻿# Double-Edged Sort: A Double Sort/Iteration Algorithm
 
 ## Description & Usage
 A pretty fast sorting algorithm, that takes the following as input:

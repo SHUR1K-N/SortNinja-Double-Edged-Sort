@@ -1,11 +1,11 @@
 import time; import os
-from colorama import init
+import colorama
 from termcolor import colored
 import re
 
 unsorted = []; sorted = []
 
-init() # Initilizing colors
+colorama.init()
 
 BANNER1 = colored('''
                   ██████  ▒█████   ██▀███  ▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
@@ -17,7 +17,7 @@ BANNER1 = colored('''
                 ░ ░▒  ░ ░  ░ ▒ ▒░   ░▒ ░ ▒░    ░    ░ ░░   ░ ▒░ ▒ ░░ ░░   ░ ▒░ ▒ ░▒░    ▒   ▒▒ ░
                 ░  ░  ░  ░ ░ ░ ▒    ░░   ░   ░         ░   ░ ░  ▒ ░   ░   ░ ░  ░ ░ ░    ░   ▒
                       ░      ░ ░     ░                       ░  ░           ░  ░   ░        ░  ░''', 'blue')
-BANNER2 = colored('''                                SortNinja: The Double Edged Sorting Algorithm''', 'red')
+BANNER2 = colored('''                                SortNinja: The Double-Edged Sorting Algorithm''', 'red')
 BANNER3 = colored('''                               -----------------------------------------------''', 'blue')
 
 

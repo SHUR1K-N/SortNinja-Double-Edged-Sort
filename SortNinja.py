@@ -41,6 +41,7 @@ def ascending(indexFirst, indexLast):
 
     if (len(unsorted) >= 1):
         sorted.insert(indexFirst, unsorted[0])
+    print(colored(" Sorted!", "green"))
     return sorted
 
 
@@ -60,6 +61,7 @@ def descending(indexFirst, indexLast):
 
     if (len(unsorted) >= 1):
         sorted.insert(indexFirst, unsorted[0])
+    print(colored(" Sorted!", "green"), end="")
     return sorted
 
 
@@ -72,21 +74,22 @@ def clrscr():
 
 
 def outputFile():
-        try:
-            outputMatch = re.search(r"(.+)[$\.].+", filePath)
-            output = str(outputMatch[1])
-            extensionMatch = re.search(r".+[$\.](.+)", filePath)
-            extension = str(extensionMatch[1])
-        except:
-            output = filePath
-            extension = ""
+    try:
+        outputMatch = re.search(r"(.+)[$\.].+", filePath)
+        output = str(outputMatch[1])
+        extensionMatch = re.search(r".+[$\.](.+)", filePath)
+        extension = str(extensionMatch[1])
+    except:
+        output = filePath
+        extension = ""
 
-        output += " [Sorted]." + extension
+    output += " [Sorted]." + extension
 
-        with open(output, "w") as file:
-            for line in sorted:
-                file.write(str(line) + "\n")
-        print(f"\n\nGenerated \"{output}\" with sorted elements.")
+    print(f"\nGenerating \"{output}\" with sorted elements...", end="")
+    with open(output, "w") as file:
+        for line in sorted:
+            file.write(str(line) + "\n")
+    print(colored(" Done!", "green"))
 
 
 ############### Main ###############
@@ -148,7 +151,6 @@ if __name__ == "__main__":
             print("\nOrder:-")
             print("1. Ascending\n2. Descending")
             ascdesc = input("\nSelect order number (Default = Ascending): ") or "1"
-
             start = time.time()
 
             if (ascdesc == "1"):
@@ -172,6 +174,8 @@ if __name__ == "__main__":
             clrscr()
             print(colored(f"\nSorted elements: {sorted}", "green"))
         elif(method == "2"):
+            time.sleep(1)
+            clrscr()
             outputFile()
 
         try:

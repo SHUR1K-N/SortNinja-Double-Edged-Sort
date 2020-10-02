@@ -1,7 +1,7 @@
 import time; import os
-import colorama
-from termcolor import colored
 import re
+from termcolor import colored
+import colorama
 
 unsorted = []; sorted = []
 

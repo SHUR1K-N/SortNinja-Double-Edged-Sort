@@ -22,4 +22,4 @@ In no way is this algorithm to be considered an effort to be among the explicitl
 
 ------------
 
-My website: http://bit.do/SHUR1KN
+My website: https://TheComputerNoob.com

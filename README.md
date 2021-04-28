@@ -15,6 +15,7 @@ This project was created in Python, and can be tested using my own [**NumNinja**
 ### Note
 In no way is this algorithm to be considered an effort to be among the explicitly *faster* of sorting algorithms. This is merely a unique/unorthodox algorithm in its manner of sorting cycles. Since the min() and max() functions that lie within a single SortNinja iteration *themselves* involve a single cycle each of scanning the entire list, this already means one iteration of SortNinja's sorting is *two* entire scans of the unsorted list using min() and max(). This gives SortNinja a time complexity of `O(2n)`, which would be the same as sorting one item at a time anyway; SortNinja just sorts both extremities alternatively (hence "Double-Edged").
 
+**TL;DR: I just wanted to use the "double-edged sort" pun, so I made something to fulfill the name.**
 
 ## Dependencies to PIP-Install
 - **colorama** (for colors)
